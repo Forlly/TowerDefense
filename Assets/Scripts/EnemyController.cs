@@ -1,20 +1,30 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour
+public class EnemyController : MonoBehaviour, IEnemyController
 {
 
-    [SerializeField] private GameObject[] wayPoints;
+    [SerializeField] public GameObject[] wayPoints;
+    [SerializeField] private Enemy typeOfEnemy;
     private int currentPoint = 0;
+    [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private int health;
     void Start()
     {
+        health = typeOfEnemy.health;
+        spriteRenderer.sprite = typeOfEnemy.sprite;
         StartCoroutine(Move(wayPoints[currentPoint].transform.position));
     }
 
-    private IEnumerator Move(Vector3 pos)
+    public void ReceiveDamage(int _damage)
     {
-        float step = 0.008f;
+        health -= _damage;
+        Debug.Log(health);
+    }
+
+    public IEnumerator Move(Vector3 pos)
+    {
+        float step = typeOfEnemy.speed;
         
         while (transform.position != pos)
         {

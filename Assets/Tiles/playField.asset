@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: forward
+  m_Name: playField
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300000, guid: 76594ee072f7d8a46932c59172a53a58, type: 3}
-  m_Color: {r: 0.77489644, g: 1, b: 0.5886792, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 123cf9f6129e3ef4fb120e89b67052a5, type: 3}
+  m_Color: {r: 0.8018868, g: 0.7087394, b: 0.5477038, a: 1}
   m_Transform:
     e00: 1
     e01: 0
