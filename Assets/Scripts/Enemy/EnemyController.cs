@@ -6,11 +6,15 @@ public class EnemyController : MonoBehaviour, IEnemyController
 
     [SerializeField] public GameObject[] wayPoints;
     [SerializeField] private Enemy typeOfEnemy;
-    private int currentPoint = 0;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private int health;
+    
+    private int currentPoint = 0;
+    
     void Start()
     {
+
+        wayPoints = EnemiesController.Instance.wayPoints;
         health = typeOfEnemy.health;
         spriteRenderer.sprite = typeOfEnemy.sprite;
         StartCoroutine(Move(wayPoints[currentPoint].transform.position));
