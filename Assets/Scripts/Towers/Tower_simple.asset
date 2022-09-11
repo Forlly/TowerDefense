@@ -16,5 +16,6 @@ MonoBehaviour:
   name: Simple Tower
   sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   type: 0
+  towerPrefab: {fileID: 5272000993600590340, guid: c8e67265469d76e4785f78e91fd8c905, type: 3}
   health: 100
   damage: 10

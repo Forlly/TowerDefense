@@ -7,6 +7,7 @@ public class Tower : ScriptableObject
     public string name;
     public Sprite sprite;
     public TowerType type;
+    public GameObject towerPrefab;
     public int health;
     public int damage;
 }

@@ -12,11 +12,10 @@ public class EnemiesController : MonoBehaviour
     public static EnemiesController Instance;
 
     private int crntCountOfEnemiesOnScreen = 0;
-    void Awake()
+    void Start()
     {
         Instance = this;
-        StartCoroutine(Spawn( crntCountOfEnemiesOnScreen,
-            maxCountOfEnemiesOnScreen));
+        StartCoroutine(Spawn( crntCountOfEnemiesOnScreen,maxCountOfEnemiesOnScreen));
         
     }
     

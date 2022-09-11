@@ -16,5 +16,6 @@ MonoBehaviour:
   name: More Damage Tower
   sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   type: 2
+  towerPrefab: {fileID: 6869536169292602523, guid: aaab89bece6c3484ab8a6eca2b3f2fde, type: 3}
   health: 100
   damage: 20
