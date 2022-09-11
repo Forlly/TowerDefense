@@ -31,7 +31,7 @@ public class EnemiesController : MonoBehaviour
             
             objOnScreen++;
 
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.8f);
         }
         
     }

@@ -9,6 +9,7 @@ public class Tower : ScriptableObject
     public TowerType type;
     public GameObject towerPrefab;
     public int health;
+    public int speed;
     public int damage;
 }
 

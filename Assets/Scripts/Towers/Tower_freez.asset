@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 1
   name: Freez Tower
-  sprite: {fileID: 21300000, guid: 8461a510e01f72d4a9d87b1f4f1b90a5, type: 2}
+  sprite: {fileID: 21300000, guid: 2346c5985c39c1d40a60bc4129ad7587, type: 3}
   type: 1
-  towerPrefab: {fileID: 3110693081425451492, guid: 17cc9a6bd30808541ae47f981c17d2c2, type: 3}
+  towerPrefab: {fileID: 8402625951507331721, guid: 17cc9a6bd30808541ae47f981c17d2c2, type: 3}
   health: 100
+  speed: 1
   damage: 10

@@ -13,7 +13,7 @@ public class GameController : MonoBehaviour
                 Vector2 mousePoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 RaycastHit2D hit = Physics2D.Raycast(mousePoint, Vector2.zero);
 
-                if (hit.collider.tag == "TowerSide")
+                if (hit.collider && hit.collider.tag == "TowerSide")
                 {
                     TowerSide towerSide = hit.collider.gameObject.GetComponent<TowerSide>();
                     if (towerSide.isFull == false)

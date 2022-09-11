@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 2
   name: More Damage Tower
-  sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  sprite: {fileID: 21300000, guid: c8c4c7fa876651c42adb50213dd9e9ee, type: 3}
   type: 2
-  towerPrefab: {fileID: 6869536169292602523, guid: aaab89bece6c3484ab8a6eca2b3f2fde, type: 3}
+  towerPrefab: {fileID: 4786962709431726192, guid: aaab89bece6c3484ab8a6eca2b3f2fde, type: 3}
   health: 100
+  speed: 2
   damage: 20
