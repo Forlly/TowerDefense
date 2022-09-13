@@ -6,22 +6,43 @@ public class GameController : MonoBehaviour
     [SerializeField] private TowerBuilder towerBuilder;
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (towerBuilder.currentTower != null)
         {
-            if (!EventSystem.current.IsPointerOverGameObject())
-            {
-                Vector2 mousePoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                RaycastHit2D hit = Physics2D.Raycast(mousePoint, Vector2.zero);
+            var groundPlane = new Plane(new Vector3(0,0,1), Vector3.zero);
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-                if (hit.collider && hit.collider.tag == "TowerSide")
+            if (groundPlane.Raycast(ray, out float position))
+            {
+                Vector3 worldPosition = ray.GetPoint(position);
+
+                int x = Mathf.RoundToInt(worldPosition.x);
+                int y = Mathf.RoundToInt(worldPosition.y);
+
+                bool available = true;
+
+                towerBuilder.currentTower.transform.position = new Vector3(x, y, 0);
+                towerBuilder.currentTower.SetTransparent(available);
+                
+                if (Input.GetMouseButtonDown(0))
                 {
-                    TowerSide towerSide = hit.collider.gameObject.GetComponent<TowerSide>();
-                    if (towerSide.isFull == false)
+                    if (!EventSystem.current.IsPointerOverGameObject())
                     {
-                        towerBuilder.PlaceTower(hit, towerSide);
+                        Vector2 mousePoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                        RaycastHit2D hit = Physics2D.Raycast(mousePoint, Vector2.zero);
+
+                        if (hit.collider && hit.collider.tag == "TowerSide")
+                        {
+                            TowerSide towerSide = hit.collider.gameObject.GetComponent<TowerSide>();
+                            if (towerSide.isFull == false)
+                            {
+                                towerBuilder.PlaceTower(towerSide, x, y);
+                            }
+                        }
                     }
                 }
             }
+            
+            
         }
     }
 }

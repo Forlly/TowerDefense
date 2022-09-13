@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class TowerButton : MonoBehaviour, IPointerClickHandler
 {
     [SerializeField] public Tower towerScrptObject;
-    [SerializeField] public GameObject towerObject;
+    [SerializeField] public TowerBuilding towerObject;
 
     [SerializeField] private Image towerImage;
     private void Start()
