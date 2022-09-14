@@ -8,6 +8,8 @@ public class TowerBuilder : MonoBehaviour
 
     [SerializeField] private List<TowerSide> grid;
     [SerializeField] private List<GameObject> pathTile;
+    
+    [SerializeField] private List<TowerBuilding> towersOnScreen;
     public TowerBuilding currentTower;
 
     private void Awake()
@@ -23,55 +25,51 @@ public class TowerBuilder : MonoBehaviour
             Destroy(currentTower.gameObject);
         
         currentTower = Instantiate(towerObj);
+        ShowAllTowersRadiusDamage();
+    }
+
+    private void ShowAllTowersRadiusDamage()
+    {
+        for (int i = 0; i < towersOnScreen.Count; i++)
+        {
+            towersOnScreen[i].ShowRadiusDamage();
+        }
+    }
+    
+    private void TurnOffShowAllTowersRadiusDamage()
+    {
+        for (int i = 0; i < towersOnScreen.Count; i++)
+        {
+            towersOnScreen[i].TurnOffShowRadiusDamage();
+        }
     }
 
     public void PlaceTower(TowerSide towerSide, int x, int y)
     {
-        if (!IsPlaceAvailable(x, y)) return;
+        if (!IsPlaceAvailable(x, y))
+        {
+            return;
+        }
         
-        Debug.Log(IsPlaceAvailable(x, y));
+        towersOnScreen.Add(currentTower);
+        TurnOffShowAllTowersRadiusDamage();
+        
         currentTower.SetNormal();
         currentTower = null;
         towerSide.isFull = true;
     }
 
-    private bool IsPlaceAvailable(int x, int y)
+    public bool IsPlaceAvailable(int x, int y)
     {
-        int available = 0;
         for (int i = 0; i < grid.Count; i++)
         {
-            if (grid[i].transform.position == new Vector3(x - currentTower.Size.x + 1,y - currentTower.Size.y + 1,0)
-                || grid[i].transform.position == new Vector3(x + currentTower.Size.x - 1,y + currentTower.Size.y - 1,0))
+            if (grid[i].transform.position == new Vector3(x ,y,0))
             {
-                if (!grid[i].isFull)
-                {
-                    available++;
-                }
+                return !grid[i].isFull;
             }
         }
 
-        if (available == 1)
-        {
-            for (int i = 0; i < pathTile.Count; i++)
-            {
-                if (pathTile[i].transform.position == 
-                    new Vector3(x + currentTower.Size.x - 1,y + currentTower.Size.y - 1,0)
-                    || pathTile[i].transform.position == 
-                    new Vector3(x - currentTower.Size.x + 1,y - currentTower.Size.y + 1,0))
-                {
-                    available++;
-                }
-            }
-            
-        }
 
-        if (available == 2)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return false;
     }
 }

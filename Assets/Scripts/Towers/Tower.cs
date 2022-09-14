@@ -11,6 +11,7 @@ public class Tower : ScriptableObject
     public int health;
     public int speed;
     public int damage;
+    public float radiusDamage;
 }
 
 public enum TowerType

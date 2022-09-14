@@ -21,6 +21,11 @@ public class GameController : MonoBehaviour
                 bool available = true;
 
                 towerBuilder.currentTower.transform.position = new Vector3(x, y, 0);
+
+                if (!towerBuilder.IsPlaceAvailable(x,y))
+                {
+                    available = false;
+                }
                 towerBuilder.currentTower.SetTransparent(available);
                 
                 if (Input.GetMouseButtonDown(0))

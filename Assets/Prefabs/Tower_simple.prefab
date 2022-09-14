@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Size: {x: 1, y: 2}
   renderer: {fileID: 3213347503754962424}
+  tower: {fileID: 11400000, guid: 8554d45ba7a3f16488ead1775bc8b160, type: 2}
 --- !u!1 &8985536959436913620
 GameObject:
   m_ObjectHideFlags: 0
