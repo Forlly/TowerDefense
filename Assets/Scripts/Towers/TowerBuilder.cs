@@ -17,6 +17,14 @@ public class TowerBuilder : MonoBehaviour
         Instance = this;
        
     }
+
+    public void DetectEnemiesAroundTowers()
+    {
+        for (int i = 0; i < towersOnScreen.Count; i++)
+        {
+            towersOnScreen[i].DetectEnemiesAroundTower();
+        }
+    }
     
 
     public void SetCurrentTower(TowerBuilding towerObj)

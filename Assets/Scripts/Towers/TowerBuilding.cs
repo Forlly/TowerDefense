@@ -8,12 +8,21 @@ public class TowerBuilding : MonoBehaviour
     [SerializeField] private Renderer renderer;
     [SerializeField] private Tower tower;
     [SerializeField] private GameObject towerRadiusDamage;
+    
+    [SerializeField] private Collider2D[] enemiesAroundTower;
 
 
     private void Awake()
     {
-        towerRadiusDamage.transform.localScale = new Vector3(tower.radiusDamage, tower.radiusDamage,
+        towerRadiusDamage.transform.localScale = new Vector3(tower.radiusDamage*2, tower.radiusDamage*2,
             towerRadiusDamage.transform.localScale.z);
+    }
+
+    public void DetectEnemiesAroundTower()
+    {
+        enemiesAroundTower =
+            Physics2D.OverlapCircleAll(transform.position, tower.radiusDamage, LayerMask.GetMask("UI"));
+
     }
 
     public void ShowRadiusDamage()
@@ -51,6 +60,9 @@ public class TowerBuilding : MonoBehaviour
             {
                 Gizmos.color = new Color(0f, 1f, 0f, 0.29f);
                 Gizmos.DrawCube(transform.position + new Vector3(i,j,0), new Vector3(1,1,0));
+                
+                UnityEditor.Handles.color = Color.green;
+                UnityEditor.Handles.DrawWireDisc(transform.position, transform.forward, tower.radiusDamage);
             }
         }
     }

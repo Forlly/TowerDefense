@@ -6,6 +6,11 @@ public class GameController : MonoBehaviour
     [SerializeField] private TowerBuilder towerBuilder;
     void Update()
     {
+        towerBuilder.DetectEnemiesAroundTowers();
+        
+        
+        
+        
         if (towerBuilder.currentTower != null)
         {
             var groundPlane = new Plane(new Vector3(0,0,1), Vector3.zero);
