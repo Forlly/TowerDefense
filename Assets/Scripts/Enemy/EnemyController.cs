@@ -24,6 +24,12 @@ public class EnemyController : MonoBehaviour, IEnemyController
     {
         health -= _damage;
         Debug.Log(health);
+        
+        if (health <= 0)
+        {
+            EnemiesController.Instance.DeleteEnemyFromList(this.gameObject);
+            Destroy(gameObject);
+        }
     }
 
     public IEnumerator Move(Vector3 pos)

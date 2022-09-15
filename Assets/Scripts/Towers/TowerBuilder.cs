@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class TowerBuilder : MonoBehaviour
@@ -22,7 +23,7 @@ public class TowerBuilder : MonoBehaviour
     {
         for (int i = 0; i < towersOnScreen.Count; i++)
         {
-            towersOnScreen[i].DetectEnemiesAroundTower();
+            towersOnScreen[i].DetectEnemiesAroundTower(EnemiesController.Instance.enemies);
         }
     }
     
@@ -61,6 +62,7 @@ public class TowerBuilder : MonoBehaviour
         
         towersOnScreen.Add(currentTower);
         TurnOffShowAllTowersRadiusDamage();
+        StartCoroutine(currentTower.StartAttack());
         
         currentTower.SetNormal();
         currentTower = null;

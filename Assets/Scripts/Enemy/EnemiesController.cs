@@ -18,6 +18,17 @@ public class EnemiesController : MonoBehaviour
         StartCoroutine(Spawn( crntCountOfEnemiesOnScreen,maxCountOfEnemiesOnScreen));
         
     }
+
+    public void DeleteEnemyFromList(GameObject currentEnemy)
+    {
+        for (int i = 0; i < enemies.Count; i++)
+        {
+            if (currentEnemy == enemies[i])
+            {
+                enemies.Remove(enemies[i]);
+            }
+        }
+    }
     
     public IEnumerator Spawn(int objOnScreen, int maxCountOfObjOnScreen)
     {
