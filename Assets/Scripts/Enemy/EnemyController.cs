@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour, IEnemyController
@@ -23,13 +24,22 @@ public class EnemyController : MonoBehaviour, IEnemyController
     public void ReceiveDamage(int _damage)
     {
         health -= _damage;
-        Debug.Log(health);
         
-        if (health <= 0)
+        
+    }
+
+    public bool EnemyKilled(int _damage, TowerBuilding tower)
+    {
+        if (health - _damage <= 0)
         {
-            EnemiesController.Instance.DeleteEnemyFromList(this.gameObject);
+            EnemiesController.Instance.DeleteEnemyFromList(gameObject);
+            tower.DeleteEnemyFromList(this);
+            
             Destroy(gameObject);
+            return true;
         }
+
+        return false;
     }
 
     public IEnumerator Move(Vector3 pos)

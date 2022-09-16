@@ -3568,7 +3568,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba91d0ebe6cc74940b84f32f4c9b7a27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GridSize: {x: 10, y: 10}
   grid:
   - {fileID: 1151080752}
   - {fileID: 868802735}

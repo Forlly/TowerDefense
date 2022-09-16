@@ -100,7 +100,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7340172806535445717
 Transform:
   m_ObjectHideFlags: 0
@@ -156,7 +156,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0.3207547, g: 0.3207547, b: 0.3207547, a: 0.45490196}
   m_FlipX: 0
@@ -218,3 +218,4 @@ MonoBehaviour:
   renderer: {fileID: 6783507681249153484}
   tower: {fileID: 11400000, guid: 8996ca7af49eca3478c7c59d81447276, type: 2}
   towerRadiusDamage: {fileID: 1752303168128126791}
+  enemiesAroundTower: []

@@ -24,11 +24,30 @@ public class TowerBuilding : MonoBehaviour
         DetectEnemiesAroundTower(EnemiesController.Instance.enemies);
         
         if (enemiesAroundTower.Count != 0)
-            enemiesAroundTower[0].GetComponent<EnemyController>().ReceiveDamage(tower.damage);
+        {
+            EnemyController tmpEnemy = enemiesAroundTower[0].GetComponent<EnemyController>();
+            if (!tmpEnemy.EnemyKilled(tower.damage, this))
+                tmpEnemy.ReceiveDamage(tower.damage);
+            else
+                StartCoroutine(StartAttack());
+        }
         
         yield return new WaitForSeconds(tower.speed);
         
         StartCoroutine(StartAttack());
+    }
+
+
+    public void DeleteEnemyFromList(EnemyController _enemy)
+    {
+        for (int i = 0; i < enemiesAroundTower.Count; i++)
+        {
+            if (_enemy.gameObject == enemiesAroundTower[i])
+            {
+                enemiesAroundTower.Remove(enemiesAroundTower[i]);
+            }
+        }
+        
     }
     public void DetectEnemiesAroundTower(List<GameObject> enemies)
     {

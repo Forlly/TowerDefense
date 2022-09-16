@@ -5,7 +5,6 @@ using UnityEngine;
 public class TowerBuilder : MonoBehaviour
 {
     public static TowerBuilder Instance;
-    public Vector2Int GridSize = new Vector2Int(10, 10);
 
     [SerializeField] private List<TowerSide> grid;
     [SerializeField] private List<GameObject> pathTile;
@@ -19,21 +18,13 @@ public class TowerBuilder : MonoBehaviour
        
     }
 
-    public void DetectEnemiesAroundTowers()
-    {
-        for (int i = 0; i < towersOnScreen.Count; i++)
-        {
-            towersOnScreen[i].DetectEnemiesAroundTower(EnemiesController.Instance.enemies);
-        }
-    }
-    
-
     public void SetCurrentTower(TowerBuilding towerObj)
     {
         if (currentTower != null)
             Destroy(currentTower.gameObject);
         
         currentTower = Instantiate(towerObj);
+        Debug.Log(towersOnScreen.Count);
         ShowAllTowersRadiusDamage();
     }
 
@@ -42,6 +33,7 @@ public class TowerBuilder : MonoBehaviour
         for (int i = 0; i < towersOnScreen.Count; i++)
         {
             towersOnScreen[i].ShowRadiusDamage();
+            Debug.Log(towersOnScreen[i]);
         }
     }
     
