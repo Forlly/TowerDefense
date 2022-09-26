@@ -9,7 +9,7 @@ public class TowerBuilder : MonoBehaviour
     [SerializeField] private List<TowerSide> grid;
     [SerializeField] private List<GameObject> pathTile;
     
-    [SerializeField] private List<TowerBuilding> towersOnScreen;
+    public List<TowerBuilding> towersOnScreen;
     public TowerBuilding currentTower;
 
     private void Awake()

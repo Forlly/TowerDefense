@@ -35,7 +35,7 @@ public class EnemyController : MonoBehaviour, IEnemyController
             EnemiesController.Instance.DeleteEnemyFromList(gameObject);
             tower.DeleteEnemyFromList(this);
             
-            Destroy(gameObject);
+            ObjectsPool.Instance.TurnOfObject(gameObject);
             return true;
         }
 

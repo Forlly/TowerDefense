@@ -44,11 +44,11 @@ public class ObjectsPool : MonoBehaviour
         return null;
     }
     
-    public  void TurnOfObject( GameObject _platform)
+    public  void TurnOfObject( GameObject obj)
     {
         for (int i = 0; i < amountPool; i++)
         {
-            if (_platform == poolObjects[i])
+            if (obj == poolObjects[i])
             {
                 poolObjects[i].SetActive(false);
             }
