@@ -6,8 +6,9 @@ public abstract class ITower : MonoBehaviour
 {
     [SerializeField] private GameObject towerRadiusDamage;
     [SerializeField] private Renderer renderer;
-    public Tower tower;
+    [SerializeField] private ISkill skill;
     
+    public Tower tower;
     public List<GameObject> enemiesAroundTower;
     
     public virtual void ShowRadiusDamage()

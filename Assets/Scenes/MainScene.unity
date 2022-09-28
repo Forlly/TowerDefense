@@ -3747,40 +3747,8 @@ MonoBehaviour:
   - {fileID: 456085081}
   - {fileID: 1452241719}
   - {fileID: 1909950276}
-  pathTile:
-  - {fileID: 1184135278}
-  - {fileID: 923721011}
-  - {fileID: 329141854}
-  - {fileID: 2124600293}
-  - {fileID: 841508980}
-  - {fileID: 1801055659}
-  - {fileID: 214709180}
-  - {fileID: 274437055}
-  - {fileID: 1034715284}
-  - {fileID: 509556131}
-  - {fileID: 763769265}
-  - {fileID: 1797840448}
-  - {fileID: 48506506}
-  - {fileID: 846213977}
-  - {fileID: 95975966}
-  - {fileID: 831194571}
-  - {fileID: 2140796858}
-  - {fileID: 2135492294}
-  - {fileID: 695447194}
-  - {fileID: 1670756643}
-  - {fileID: 258074155}
-  - {fileID: 1478609315}
-  - {fileID: 1956104044}
-  - {fileID: 648627762}
-  - {fileID: 634276671}
-  - {fileID: 1770566231}
-  - {fileID: 1227061730}
-  - {fileID: 1984869705}
-  - {fileID: 918509239}
-  - {fileID: 138746312}
-  - {fileID: 348689313}
   towersOnScreen: []
-  currentTower: {fileID: 0}
+  currentSimpleTower: {fileID: 0}
 --- !u!4 &320044169
 Transform:
   m_ObjectHideFlags: 0

@@ -9,12 +9,14 @@ public class EnemyController : MonoBehaviour, IEnemyController
     [SerializeField] private Enemy typeOfEnemy;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private int health;
+
+    public float speed;
     
     private int currentPoint = 0;
     
     void Start()
     {
-
+        speed = typeOfEnemy.speed;
         wayPoints = EnemiesController.Instance.wayPoints;
         health = typeOfEnemy.health;
         spriteRenderer.sprite = typeOfEnemy.sprite;
@@ -24,18 +26,17 @@ public class EnemyController : MonoBehaviour, IEnemyController
     public void ReceiveDamage(int _damage)
     {
         health -= _damage;
-        
-        
     }
 
-    public bool EnemyKilled(int _damage, TowerBuilding tower)
+    public bool EnemyKilled(int _damage, SimpleTowerBuilding simpleTower)
     {
         if (health - _damage <= 0)
         {
             EnemiesController.Instance.DeleteEnemyFromList(gameObject);
-            tower.DeleteEnemyFromList(this);
+            simpleTower.DeleteEnemyFromList(this);
             
             ObjectsPool.Instance.TurnOfObject(gameObject);
+            Debug.Log("Delete enemy" + this.gameObject);
             return true;
         }
 

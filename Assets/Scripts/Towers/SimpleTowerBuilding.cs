@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TowerBuilding : ITower
+public class SimpleTowerBuilding : ITower
 {
     
     public override IEnumerator StartAttack()
@@ -14,8 +14,6 @@ public class TowerBuilding : ITower
             EnemyController tmpEnemy = enemiesAroundTower[0].GetComponent<EnemyController>();
             if (!tmpEnemy.EnemyKilled(tower.damage, this))
                 tmpEnemy.ReceiveDamage(tower.damage);
-            else
-                StartCoroutine(StartAttack());
         }
         
         yield return new WaitForSeconds(tower.speed);
@@ -30,7 +28,8 @@ public class TowerBuilding : ITower
         
         for (int i = 0; i < enemies.Count; i++)
         {
-            if (Mathf.Abs(Vector2.Distance(transform.position,enemies[i].transform.position)) <= tower.radiusDamage)
+            if (Mathf.Abs(Vector2.Distance(transform.position,enemies[i].transform.position)) 
+                <= tower.radiusDamage)
             {
                 enemiesAroundTower.Add(enemies[i]);
             }

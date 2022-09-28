@@ -7,10 +7,9 @@ public class TowerBuilder : MonoBehaviour
     public static TowerBuilder Instance;
 
     [SerializeField] private List<TowerSide> grid;
-    [SerializeField] private List<GameObject> pathTile;
-    
-    public List<TowerBuilding> towersOnScreen;
-    public TowerBuilding currentTower;
+
+    public List<SimpleTowerBuilding> towersOnScreen;
+    public SimpleTowerBuilding currentSimpleTower;
 
     private void Awake()
     {
@@ -18,12 +17,12 @@ public class TowerBuilder : MonoBehaviour
        
     }
 
-    public void SetCurrentTower(TowerBuilding towerObj)
+    public void SetCurrentTower(SimpleTowerBuilding simpleTowerObj)
     {
-        if (currentTower != null)
-            Destroy(currentTower.gameObject);
+        if (currentSimpleTower != null)
+            Destroy(currentSimpleTower.gameObject);
         
-        currentTower = Instantiate(towerObj);
+        currentSimpleTower = Instantiate(simpleTowerObj);
         Debug.Log(towersOnScreen.Count);
         ShowAllTowersRadiusDamage();
     }
@@ -52,12 +51,12 @@ public class TowerBuilder : MonoBehaviour
             return;
         }
         
-        towersOnScreen.Add(currentTower);
+        towersOnScreen.Add(currentSimpleTower);
         TurnOffShowAllTowersRadiusDamage();
-        StartCoroutine(currentTower.StartAttack());
+        StartCoroutine(currentSimpleTower.StartAttack());
         
-        currentTower.SetNormal();
-        currentTower = null;
+        currentSimpleTower.SetNormal();
+        currentSimpleTower = null;
         towerSide.isFull = true;
     }
 
