@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class TowerBuilder : MonoBehaviour
@@ -7,9 +6,10 @@ public class TowerBuilder : MonoBehaviour
     public static TowerBuilder Instance;
 
     [SerializeField] private List<TowerSide> grid;
+    [SerializeField] private List<ISkill> skills;
 
-    public List<SimpleTowerBuilding> towersOnScreen;
-    public SimpleTowerBuilding currentSimpleTower;
+    public List<ITower> towersOnScreen;
+    public ITower currentTower;
 
     private void Awake()
     {
@@ -17,13 +17,12 @@ public class TowerBuilder : MonoBehaviour
        
     }
 
-    public void SetCurrentTower(SimpleTowerBuilding simpleTowerObj)
+    public void SetCurrentTower(ITower _tower)
     {
-        if (currentSimpleTower != null)
-            Destroy(currentSimpleTower.gameObject);
+        if (currentTower != null)
+            Destroy(currentTower.gameObject);
         
-        currentSimpleTower = Instantiate(simpleTowerObj);
-        Debug.Log(towersOnScreen.Count);
+        currentTower = Instantiate(_tower);
         ShowAllTowersRadiusDamage();
     }
 
@@ -32,7 +31,6 @@ public class TowerBuilder : MonoBehaviour
         for (int i = 0; i < towersOnScreen.Count; i++)
         {
             towersOnScreen[i].ShowRadiusDamage();
-            Debug.Log(towersOnScreen[i]);
         }
     }
     
@@ -51,12 +49,14 @@ public class TowerBuilder : MonoBehaviour
             return;
         }
         
-        towersOnScreen.Add(currentSimpleTower);
+        towersOnScreen.Add(currentTower);
         TurnOffShowAllTowersRadiusDamage();
-        StartCoroutine(currentSimpleTower.StartAttack());
         
-        currentSimpleTower.SetNormal();
-        currentSimpleTower = null;
+        currentTower.SetSkill(currentTower.tower.type);
+        StartCoroutine(currentTower.StartAttack());
+
+        currentTower.SetNormal();
+        currentTower = null;
         towerSide.isFull = true;
     }
 

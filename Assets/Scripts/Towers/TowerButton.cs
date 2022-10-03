@@ -5,17 +5,17 @@ using UnityEngine.UI;
 public class TowerButton : MonoBehaviour, IPointerClickHandler
 {
     [SerializeField] public Tower towerScrptObject;
-    [SerializeField] public SimpleTowerBuilding simpleTowerObject;
+    [SerializeField] public ITower tower;
 
     [SerializeField] private Image towerImage;
     private void Start()
     {
         towerImage.sprite = towerScrptObject.sprite;
-        simpleTowerObject = towerScrptObject.simpleTowerPrefab;
+        tower = towerScrptObject.tower;
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        TowerBuilder.Instance.SetCurrentTower(simpleTowerObject);
+        TowerBuilder.Instance.SetCurrentTower(tower);
     }
 }

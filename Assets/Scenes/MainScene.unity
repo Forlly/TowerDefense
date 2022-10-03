@@ -3748,7 +3748,7 @@ MonoBehaviour:
   - {fileID: 1452241719}
   - {fileID: 1909950276}
   towersOnScreen: []
-  currentSimpleTower: {fileID: 0}
+  currentTower: {fileID: 0}
 --- !u!4 &320044169
 Transform:
   m_ObjectHideFlags: 0

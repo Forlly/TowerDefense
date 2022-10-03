@@ -22,20 +22,4 @@ public class SimpleTowerBuilding : ITower
     }
 
 
-    public override void DetectEnemiesAroundTower(List<GameObject> enemies)
-    {
-        enemiesAroundTower.Clear();
-        
-        for (int i = 0; i < enemies.Count; i++)
-        {
-            if (Mathf.Abs(Vector2.Distance(transform.position,enemies[i].transform.position)) 
-                <= tower.radiusDamage)
-            {
-                enemiesAroundTower.Add(enemies[i]);
-            }
-        }
-
-    }
-
-
 }

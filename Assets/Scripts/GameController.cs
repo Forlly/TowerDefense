@@ -6,7 +6,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private TowerBuilder towerBuilder;
     void Update()
     {
-        if (towerBuilder.currentSimpleTower != null)
+        if (towerBuilder.currentTower != null)
         {
             var groundPlane = new Plane(new Vector3(0,0,1), Vector3.zero);
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -20,13 +20,13 @@ public class GameController : MonoBehaviour
 
                 bool available = true;
 
-                towerBuilder.currentSimpleTower.transform.position = new Vector3(x, y, 0);
+                towerBuilder.currentTower.transform.position = new Vector3(x, y, 0);
 
                 if (!towerBuilder.IsPlaceAvailable(x,y))
                 {
                     available = false;
                 }
-                towerBuilder.currentSimpleTower.SetTransparent(available);
+                towerBuilder.currentTower.SetTransparent(available);
                 
                 if (Input.GetMouseButtonDown(0))
                 {

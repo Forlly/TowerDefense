@@ -6,10 +6,28 @@ public abstract class ITower : MonoBehaviour
 {
     [SerializeField] private GameObject towerRadiusDamage;
     [SerializeField] private Renderer renderer;
-    [SerializeField] private ISkill skill;
+    private ISkill skill;
     
     public Tower tower;
     public List<GameObject> enemiesAroundTower;
+
+    public virtual void SetSkill(TowerType type)
+    {
+   
+        switch (type)
+        {
+            case TowerType.simple:
+                skill = new SimpleDamageSkill();
+                break;
+            case TowerType.freez:
+                skill = new FreezSkill();
+                break;
+        }
+        
+        skill.SetDamage();
+        Debug.Log(skill);
+        Debug.Log(skill.damage);
+    }
     
     public virtual void ShowRadiusDamage()
     {
@@ -44,12 +62,32 @@ public abstract class ITower : MonoBehaviour
     
     public virtual void DetectEnemiesAroundTower(List<GameObject> enemies)
     {
-
+        enemiesAroundTower.Clear();
+        
+        for (int i = 0; i < enemies.Count; i++)
+        {
+            if (Mathf.Abs(Vector2.Distance(transform.position,enemies[i].transform.position)) 
+                <= tower.radiusDamage)
+            {
+                enemiesAroundTower.Add(enemies[i]);
+            }
+        }
     }
     
     public virtual IEnumerator StartAttack()
     {
-        yield return null;
+        DetectEnemiesAroundTower(EnemiesController.Instance.enemies);
+        
+        if (enemiesAroundTower.Count != 0)
+        {
+            EnemyController tmpEnemy = enemiesAroundTower[0].GetComponent<EnemyController>();
+            if (!tmpEnemy.EnemyKilled(tower.damage, this))
+                skill.Attack(tmpEnemy);
+        }
+        
+        yield return new WaitForSeconds(tower.speed);
+        
+        StartCoroutine(StartAttack());
     }
     
     public virtual void DeleteEnemyFromList(EnemyController _enemy)

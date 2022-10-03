@@ -28,7 +28,7 @@ public class EnemyController : MonoBehaviour, IEnemyController
         health -= _damage;
     }
 
-    public bool EnemyKilled(int _damage, SimpleTowerBuilding simpleTower)
+    public bool EnemyKilled(int _damage, ITower simpleTower)
     {
         if (health - _damage <= 0)
         {
