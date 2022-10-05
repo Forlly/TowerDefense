@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SimpleTowerBuilding : ITower
+public class SimpleTower : ITower
 {
     
     public override IEnumerator StartAttack()
