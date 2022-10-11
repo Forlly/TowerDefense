@@ -8,7 +8,6 @@ public class Tower : ScriptableObject
     public Sprite sprite;
     public TowerType type;
     public ITower tower;
-    public int health;
     public int speed;
     public int damage;
     public float radiusDamage;

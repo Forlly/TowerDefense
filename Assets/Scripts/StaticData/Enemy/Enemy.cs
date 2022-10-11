@@ -9,7 +9,6 @@ public class Enemy : ScriptableObject
     public int health;
     public EnemyType type;
     public float speed;
-    public int damage;
 }
 
 public enum EnemyType

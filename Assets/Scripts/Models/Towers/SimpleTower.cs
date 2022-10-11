@@ -11,7 +11,7 @@ public class SimpleTower : ITower
         
         if (enemiesAroundTower.Count != 0)
         {
-            EnemyController tmpEnemy = enemiesAroundTower[0].GetComponent<EnemyController>();
+            UnitView tmpEnemy = enemiesAroundTower[0].GetComponent<UnitView>();
             if (!tmpEnemy.EnemyKilled(tower.damage, this))
                 tmpEnemy.ReceiveDamage(tower.damage);
         }
